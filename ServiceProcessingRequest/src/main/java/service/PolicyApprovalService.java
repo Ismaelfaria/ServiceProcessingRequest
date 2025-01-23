@@ -13,10 +13,10 @@ public class PolicyApprovalService {
 	private final RabbitTemplate rabbitTemplate;
 
 	@Value("${rabbitmq.request.queue}")
-	private String requestQueue;
+	public String requestQueue;
 
 	@Value("${rabbitmq.response.queue}")
-	private String responseQueue;
+	public String responseQueue;
 
 	public PolicyApprovalService(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
@@ -47,7 +47,7 @@ public class PolicyApprovalService {
 
 	private boolean isValidResponse(PolicyApprovalResponse response, String policyId) {
 		return response.getPolicyId() != null && response.getPolicyId().equals(policyId)
-				&& response.isApproved() != true;
+				&& response.getApproved() != false;
 	}
 
 	private PolicyApprovalResponse createErrorResponse(String policyId, String errorMessage) {

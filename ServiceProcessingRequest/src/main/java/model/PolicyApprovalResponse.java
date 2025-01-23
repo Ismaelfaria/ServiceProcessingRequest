@@ -20,7 +20,7 @@ public class PolicyApprovalResponse {
 		this.policyId = policyId;
 	}
 
-	public boolean isApproved() {
+	public boolean getApproved() {
 		return approved;
 	}
 
